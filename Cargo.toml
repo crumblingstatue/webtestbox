@@ -1,0 +1,8 @@
+[package]
+name = "webtestbox"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+tiny_http = "0.6.2"
+mime_guess = "1.8.6"
