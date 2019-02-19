@@ -2,7 +2,6 @@ use tiny_http::{Header, Request, Response, Server};
 
 fn serve(path: &str, request: Request) {
     let mime = mime_guess::guess_mime_type(path);
-    println!("mime: {}", mime);
     let data = match std::fs::read(&path) {
         Ok(data) => data,
         Err(e) => {
@@ -23,7 +22,6 @@ fn main() {
 
     for request in server.incoming_requests() {
         let url = request.url();
-        println!("{:?}", url);
         let corrected_path = if url == "/" {
             "index.html".to_owned()
         } else if url.find('.').is_some() {
@@ -31,7 +29,6 @@ fn main() {
         } else {
             format!("content{}.html", url)
         };
-        println!("[c] {:?}", corrected_path);
         serve(&corrected_path, request);
     }
 }
