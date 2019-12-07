@@ -1,7 +1,7 @@
 use tiny_http::{Header, Request, Response, Server};
 
 fn serve(path: &str, request: Request) {
-    let mime = mime_guess::guess_mime_type(path);
+    let mime = mime_guess::from_path(path).first_or_octet_stream();
     let data = match std::fs::read(&path) {
         Ok(data) => data,
         Err(e) => {
