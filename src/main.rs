@@ -18,7 +18,9 @@ fn serve(path: &str, request: Request) {
 }
 
 fn main() {
-    let server = Server::http("0.0.0.0:8000").unwrap();
+    let addr = "0.0.0.0:8000";
+    println!("Serving on {}", addr);
+    let server = Server::http(addr).unwrap();
 
     for request in server.incoming_requests() {
         let url = request.url();
