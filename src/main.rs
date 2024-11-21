@@ -19,7 +19,7 @@ fn serve(path: &str, request: Request) {
 
 fn main() {
     let addr = "0.0.0.0:8000";
-    println!("Serving on {}", addr);
+    eprintln!("Serving on http://{addr}");
     let server = Server::http(addr).unwrap();
 
     for request in server.incoming_requests() {
